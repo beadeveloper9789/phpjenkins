@@ -14,8 +14,8 @@ spec:
         app: php
     spec:
       containers:
-      - name: tetris
-        image: naresh3451213/php:latest
+      - name: php
+        image: naresh3451213/ab_www:latest
         ports:
         - containerPort: 82  # Use port 3000
 
