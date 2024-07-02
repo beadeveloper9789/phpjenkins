@@ -43,8 +43,11 @@ resource "aws_instance" "instance_1" {
 # Copies the file to Apache Webserver /var/www/html directory
   provisioner "remote-exec" {
     inline = [
-      "sleep 120",  # Will sleep for 120 seconds to ensure Apache webserver is provisioned using user_data
-      "sudo cp /tmp/file-copy.html /var/www/html"
+                   "sudo mkdir /root/data",
+                  "sudo git clone https://github.com/shubham1224/cloud-task1.git  /root/data/",
+                  "sudo mv /root/data/*.php  /var/www/html/"
+                        
+     
     ]
   }
 
