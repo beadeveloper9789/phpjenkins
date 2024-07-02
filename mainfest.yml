@@ -17,5 +17,5 @@ spec:
       - name: tetris
         image: naresh3451213/php:latest
         ports:
-        - containerPort: 3000   # Use port 3000
+        - containerPort: 82  # Use port 3000
 
