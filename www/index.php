@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>Ranjit Swain | Docker class</title>
+  <title> ram | Docker class</title>
 
   <meta charset="utf-8">
 
@@ -11,11 +11,11 @@
 </head>
 <body>
     <div class="container">
-    <?php echo "<h1>Hi! I'm Ranjit</h1>"; ?>
+    <?php echo "<h1>Hi! I'm Ram</h1>"; ?>
 	<?php echo "<h3>This is Docker Compose Class!</h3>"; ?>
 
     <?php
-    $conn = mysqli_connect('db', 'ranjit', 'ranjit', "myDb");
+    $conn = mysqli_connect('db', 'ram', 'ram', "myDb");
     $query = 'SELECT * From Person';
     $result = mysqli_query($conn, $query);
     echo '<table class="table table-striped">';
