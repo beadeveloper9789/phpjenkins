@@ -25,22 +25,60 @@ resource "aws_instance" "instance_1" {
   ami             = var.ami
   instance_type   = var.instance_type
   security_groups = [aws_security_group.instances.name]
-  user_data       = <<-EOF
-              #!/bin/bash
-              echo "Hello, World 1" > index.html
-              python3 -m http.server 8080 &
-              EOF
+  user_data       = file("apache-install.sh")
+ connection {
+    type = "ssh"
+    host = self.public_ip # Understand what is "self"
+    user = "ubuntu"
+    password = ""
+    private_key = file("private-key/purplehaze.pem")
+  }  
+
+ # Copies the file-copy.html file to /tmp/file-copy.html
+  provisioner "file" {
+    source      = "apps/file-copy.html"
+    destination = "/tmp/file-copy.html"
+  }
+
+# Copies the file to Apache Webserver /var/www/html directory
+  provisioner "remote-exec" {
+    inline = [
+      "sleep 120",  # Will sleep for 120 seconds to ensure Apache webserver is provisioned using user_data
+      "sudo cp /tmp/file-copy.html /var/www/html"
+    ]
+  }
+
+
+}
+             
 }
 
 resource "aws_instance" "instance_2" {
   ami             = var.ami
   instance_type   = var.instance_type
   security_groups = [aws_security_group.instances.name]
-  user_data       = <<-EOF
-              #!/bin/bash
-              echo "Hello, World 2" > index.html
-              python3 -m http.server 8080 &
-              EOF
+  user_data       = file("apache-install.sh")
+ connection {
+    type = "ssh"
+    host = self.public_ip # Understand what is "self"
+    user = "ubuntu"
+    password = ""
+    private_key = file("private-key/purplehaze.pem")
+  }  
+
+ # Copies the file-copy.html file to /tmp/file-copy.html
+  provisioner "file" {
+    source      = "apps/file-copy.html"
+    destination = "/tmp/file-copy.html"
+  }
+
+# Copies the file to Apache Webserver /var/www/html directory
+  provisioner "remote-exec" {
+    inline = [
+      "sleep 120",  # Will sleep for 120 seconds to ensure Apache webserver is provisioned using user_data
+      "sudo cp /tmp/file-copy.html /var/www/html"
+    ]
+  }
 }
 
 resource "aws_s3_bucket" "bucket" {
