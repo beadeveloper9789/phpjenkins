@@ -35,7 +35,7 @@ pipeline{
         stage('Terraform apply'){
              steps{
                  dir('eks-terraform') {
-                      sh 'terraform apply --auto-approve'
+                      sh 'terraform destroy --auto-approve'
                    }      
              }
         }
