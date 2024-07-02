@@ -13,28 +13,28 @@ pipeline{
         }
         stage('Terraform init'){
              steps{
-                 dir('Eks-terraform') {
+                 dir('eks-terraform') {
                       sh 'terraform init -migrate-state'
                    }      
              }
         }
         stage('Terraform validate'){
              steps{
-                 dir('Eks-terraform') {
+                 dir('eks-terraform') {
                       sh 'terraform validate '
                    }      
              }
         }
         stage('Terraform plan'){
              steps{
-                 dir('Eks-terraform') {
+                 dir('eks-terraform') {
                       sh 'terraform plan'
                    }      
              }
         }
         stage('Terraform apply'){
              steps{
-                 dir('Eks-terraform') {
+                 dir('eks-terraform') {
                       sh 'terraform apply --auto-approve'
                    }      
              }
