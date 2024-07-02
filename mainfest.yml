@@ -1,1 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: php
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
+      - name: tetris
+        image: naresh3451213/php:latest
+        ports:
+        - containerPort: 3000   # Use port 3000
 
