@@ -1,0 +1,15 @@
+---
+- name: Deploy php App
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Apply Deployment
+      k8s:
+        definition: "{{ lookup('file', 'phpdeployment.yaml') }}"
+        state: present
+
+    - name: Apply Service
+      k8s:
+        definition: "{{ lookup('file', 'phpservice.yaml') }}"
+        state: present
