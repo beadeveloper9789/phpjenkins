@@ -21,7 +21,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                        NEW_IMAGE_NAME = "naresh3451213/ab_www:latest"   
-                       sh "sed -i 's|image: .*|image: $NEW_IMAGE_NAME|' deployment.yml"
+                       sh "sed -i 's|image: .*|image: $NEW_IMAGE_NAME|' manifest.yml"
                        sh 'git add manifest.yml'
                        sh "git commit -m 'Update deployment image to $NEW_IMAGE_NAME'"
                        sh "git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master"
