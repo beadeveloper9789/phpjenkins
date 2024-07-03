@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  environment {
+    GIT_REPO_NAME = "phpjenkins"
+    GIT_USER_NAME = "beadeveloper9789"     
+  }
+
   stages {
     stage ('Run Docker Compose') {
       steps{
