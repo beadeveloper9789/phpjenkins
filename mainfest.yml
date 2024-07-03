@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: php
-        image: naresh345121/ab_www:latest
+        image: imageupdate
         ports:
         - containerPort: 82  # Use port 3000
 
