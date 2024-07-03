@@ -10,7 +10,6 @@ pipeline {
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
-                       sh "docker build -t naresh3451213/ab_www ."
                        sh "docker tag  naresh3451213/ab_www:latest "
                        sh "docker push naresh3451213/ab_www:latest "
                     }
